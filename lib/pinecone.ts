@@ -30,7 +30,7 @@ type PDFPage = {
  * embed chunks, and upsert into Pinecone.
  */
 export async function loadLocalFileIntoPinecone(fileKey: string) {
-  const filePath = path.join(process.cwd(), "uploads", fileKey);
+  const filePath = path.join(process.cwd(),"public", "uploads", fileKey);
 
   console.log("Loading PDF:", filePath);
   const loader = new PDFLoader(filePath);
@@ -40,7 +40,7 @@ export async function loadLocalFileIntoPinecone(fileKey: string) {
   const vectors = await Promise.all(documents.flat().map(embedDocument));
 
   const client = await getPineconeClient();
-  const pineconeIndex = client.index("chatpdf");
+  const pineconeIndex = client.index("querydoc");
   const namespace = pineconeIndex.namespace(convertToAscii(fileKey));
 
   console.log("Upserting vectors...");

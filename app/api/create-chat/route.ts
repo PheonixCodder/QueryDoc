@@ -19,7 +19,7 @@ export async function POST(req: Request, res: Response) {
       .values({
         fileKey: file_key,
         pdfName: file_name,
-        pdfUrl: `/uploads/${file_key}`,
+        pdfUrl: `/public/uploads/${file_key}`,
         userId,
       })
       .returning({
