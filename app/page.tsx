@@ -24,10 +24,12 @@ export default async function Home() {
         <div className="flex flex-col items-center text-center">
           <div className="flex items-center">
             <h1 className="mr-3 text-5xl font-semibold">Chat with any PDF</h1>
+            <div className="mt-4">
             <UserButton />
+            </div>
           </div>
 
-          <div className="flex mt-2">
+          <div className="flex my-8">
             {isAuth && firstChat && (
               <>
                 <Link href={`/chat/${firstChat.id}`}>
